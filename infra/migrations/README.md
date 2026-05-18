@@ -1,7 +1,5 @@
 # Stratey & Explanation
 
-## 🗄️ Database Architecture (ConsumerIQ)
-
 ConsumerIQ is built for a 5-day hackathon sprint, meaning our database schema prioritizes speed, AI compatibility, and UI flexibility. We use **PostgreSQL 16** supercharged with the `pgvector` extension. 
 
 The architecture is divided into three hyper-optimized tables: two for storing raw Web Scraper data (Layer 2), and one for serving unified AI insights to the Next.js frontend (Layer 3).
