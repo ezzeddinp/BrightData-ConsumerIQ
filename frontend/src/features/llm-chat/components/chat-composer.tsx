@@ -70,15 +70,17 @@ function PromptInputAttachmentsDisplay() {
   }
 
   return (
-    <Attachments variant="inline">
-      {attachments.files.map((attachment) => (
-        <AttachmentItem
-          attachment={attachment}
-          key={attachment.id}
-          onRemove={handleRemove}
-        />
-      ))}
-    </Attachments>
+    <PromptInputHeader>
+      <Attachments variant="inline">
+        {attachments.files.map((attachment) => (
+          <AttachmentItem
+            attachment={attachment}
+            key={attachment.id}
+            onRemove={handleRemove}
+          />
+        ))}
+      </Attachments>
+    </PromptInputHeader>
   )
 }
 
@@ -117,9 +119,7 @@ export function ChatComposer({
         }}
         onSubmit={onSubmit}
       >
-        <PromptInputHeader>
-          <PromptInputAttachmentsDisplay />
-        </PromptInputHeader>
+        <PromptInputAttachmentsDisplay />
         <PromptInputBody>
           <PromptInputTextarea
             onChange={onTextChange}

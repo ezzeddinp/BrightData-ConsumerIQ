@@ -69,7 +69,15 @@ export function ChatConversation({ messages }: ChatConversationProps) {
                     ) : null}
 
                     <MessageContent>
-                      <MessageResponse>{version.content}</MessageResponse>
+                      <MessageResponse
+                        className={
+                          message.from === 'assistant'
+                            ? 'prose-chat'
+                            : undefined
+                        }
+                      >
+                        {version.content}
+                      </MessageResponse>
                     </MessageContent>
                   </div>
                 </Message>
