@@ -4,3 +4,10 @@ resources:
   - namespace.yaml
   - postgres-statefulset.yaml
   - postgres-service.yaml
+
+configMapGenerator:
+  - name: postgres-init
+    files:
+      - ddl.sql=migration/ddl.sql
+generatorOptions:
+  disableNameSuffixHash: true

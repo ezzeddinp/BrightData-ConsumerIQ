@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumeriq-api
+  namespace: consumeriq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumeriq-api
+  template:
+    metadata:
+      labels:
+        app: consumeriq-api
+    spec:
+      containers:
+        - name: api
+          image: consumeriq-backend:local
+          ports:
+            - containerPort: 8000
+          env:
+            - name: REDIS_URL
+              value: redis://redis.consumeriq.svc.cluster.local:6379/0

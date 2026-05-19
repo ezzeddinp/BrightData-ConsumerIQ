@@ -18,3 +18,4 @@ spec:
           image: redis:7.2.14-alpine3.21
           ports:
             - containerPort: 6379
+          args: ["--maxmemory", "2gb", "--maxmemory-policy", "allkeys-lru"]

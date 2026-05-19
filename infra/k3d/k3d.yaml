@@ -4,6 +4,9 @@ metadata:
   name: consumeriq-local
 servers: 1
 agents: 2
+kubeAPI:
+  host: "127.0.0.1"
+  hostIP: "127.0.0.1"
 ports:
   # Expose common ports; adjust as needed when services are added.
   - port: 5432:5432
