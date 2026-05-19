@@ -23,6 +23,9 @@ import { initialMessages, suggestions } from './data/chat-content'
 import { buildMockResponse, delay } from './lib/mock-streaming'
 import type { ChatStatus, MessageType } from './types'
 
+const STREAM_FRAME_MS = 16
+const STREAM_CHARS_PER_FRAME = 8
+
 export function LlmChatFeature() {
   const sidebarPanelRef = useRef<PanelImperativeHandle>(null)
   const streamAbortRef = useRef(false)
@@ -61,19 +64,22 @@ export function LlmChatFeature() {
       setStatus('streaming')
       setStreamingMessageId(messageId)
 
-      const words = content.split(' ')
       let currentContent = ''
 
-      for (const [index, word] of words.entries()) {
+      for (
+        let index = STREAM_CHARS_PER_FRAME;
+        index <= content.length + STREAM_CHARS_PER_FRAME;
+        index += STREAM_CHARS_PER_FRAME
+      ) {
         if (streamAbortRef.current) {
           setStatus('ready')
           setStreamingMessageId(null)
           return
         }
 
-        currentContent += `${index > 0 ? ' ' : ''}${word}`
+        currentContent = content.slice(0, index)
         updateMessageContent(messageId, currentContent)
-        await delay(55)
+        await delay(STREAM_FRAME_MS)
       }
 
       setStatus('ready')

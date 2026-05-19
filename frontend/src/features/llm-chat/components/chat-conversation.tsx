@@ -1,5 +1,6 @@
 import {
   Conversation,
+  ConversationAutoScroll,
   ConversationContent,
   ConversationScrollButton,
 } from '@/components/ai-elements/conversation'
@@ -32,6 +33,8 @@ interface ChatConversationProps {
 }
 
 export function ChatConversation({ messages }: ChatConversationProps) {
+  const latestMessageKey = messages.at(-1)?.key
+
   return (
     <Conversation>
       <ConversationContent>
@@ -94,6 +97,7 @@ export function ChatConversation({ messages }: ChatConversationProps) {
           </MessageBranch>
         ))}
       </ConversationContent>
+      <ConversationAutoScroll trigger={latestMessageKey} />
       <ConversationScrollButton />
     </Conversation>
   )

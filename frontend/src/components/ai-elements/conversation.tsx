@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import type { UIMessage } from "ai";
 import { ArrowDownIcon, DownloadIcon } from "lucide-react";
 import type { ComponentProps } from "react";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
 
 export type ConversationProps = ComponentProps<typeof StickToBottom>;
@@ -33,6 +33,22 @@ export const ConversationContent = ({
     {...props}
   />
 );
+
+export type ConversationAutoScrollProps = {
+  trigger?: string | number;
+};
+
+export const ConversationAutoScroll = ({
+  trigger,
+}: ConversationAutoScrollProps) => {
+  const { scrollToBottom } = useStickToBottomContext();
+
+  useEffect(() => {
+    scrollToBottom({ animation: "smooth", ignoreEscapes: true });
+  }, [scrollToBottom, trigger]);
+
+  return null;
+};
 
 export type ConversationEmptyStateProps = ComponentProps<"div"> & {
   title?: string;
