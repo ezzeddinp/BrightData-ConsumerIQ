@@ -5,18 +5,18 @@ from llama_cpp import Llama
 
 
 def _defaultLlmPath() -> Path:
-    return Path(__file__).resolve().parents[2] / 'models' / 'Llama-3.2-3B-Instruct-Q4_K_L.gguf'
+    return Path(__file__).resolve().parents[2] / 'models' / 'Llama3.23B.gguf'
 
 
 def createLlm(
-    model_path: Optional[Path] = None,
+    modelPath: Optional[Path] = None,
     *,
-    n_ctx: int = 4096,
+    nCtx: int = 4096,
     verbose: bool = False,
 ) -> Llama:
-    resolved_path = model_path or _defaultLlmPath()
+    resolvedPath = modelPath or _defaultLlmPath()
     return Llama(
-        model_path=str(resolved_path),
-        n_ctx=n_ctx,
+        model_path=str(resolvedPath),
+        n_ctx=nCtx,
         verbose=verbose,
     )

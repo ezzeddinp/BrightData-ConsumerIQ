@@ -16,7 +16,9 @@ spec:
       containers:
         - name: worker
           image: consumeriq-backend:local
-          command: ["celery", "-A", "backend.redis.worker.celery_app", "worker", "-l", "info"]
+          command: ["celery", "-A", "backend.redis.worker.celeryApp", "worker", "-l", "info"]
           env:
             - name: REDIS_URL
               value: redis://redis.consumeriq.svc.cluster.local:6379/0
+            - name: DATABASE_URL
+              value: postgresql://consumeriq:consumeriq@postgres.consumeriq.svc.cluster.local:5432/consumeriq

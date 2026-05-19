@@ -6,13 +6,13 @@ from llama_cpp import Llama
 
 
 def _defaultEmbedderPath() -> Path:
-    return Path(__file__).resolve().parents[2] / 'models' / 'all-MiniLM-L6-v2.Q4_K_M.gguf'
+    return Path(__file__).resolve().parents[2] / 'models' / 'multilingualMiniLML12v2.gguf'
 
 
-def createEmbedder(model_path: Optional[Path] = None, *, verbose: bool = False) -> Llama:
-    resolved_path = model_path or _defaultEmbedderPath()
+def createEmbedder(modelPath: Optional[Path] = None, *, verbose: bool = False) -> Llama:
+    resolvedPath = modelPath or _defaultEmbedderPath()
     return Llama(
-        model_path=str(resolved_path),
+        model_path=str(resolvedPath),
         embedding=True,
         verbose=verbose,
     )
@@ -27,25 +27,25 @@ def embedTexts(embedder: Llama, texts: Iterable[str]) -> list[list[float]]:
 
 
 if __name__ == '__main__':
-    print('Loading all-MiniLM-L6-v2 GGUF...')
-    start_time = time.time()
+    print('Loading multilingualMiniLML12v2 GGUF...')
+    startTime = time.time()
 
     embedder = createEmbedder(verbose=False)
 
-    print(f'Model loaded in {time.time() - start_time:.2f} seconds!')
+    print(f'Model loaded in {time.time() - startTime:.2f} seconds!')
 
-    mock_tiktok_comment = (
+    mockTikTokComment = (
         'WARNING: I used this hydrating serum and it gave me massive chemical burns. '
         'I think there are fake sellers on Shopee selling counterfeit batches. Do not buy!'
     )
 
     print('\nEmbedding mock TikTok comment...')
-    start_time = time.time()
+    startTime = time.time()
 
-    response = embedder.create_embedding(mock_tiktok_comment)
+    response = embedder.create_embedding(mockTikTokComment)
     vector = response['data'][0]['embedding']
 
-    print(f'Embedding completed in {time.time() - start_time:.4f} seconds!')
+    print(f'Embedding completed in {time.time() - startTime:.4f} seconds!')
     print(f'\nVector Dimension Count: {len(vector)}')
     print(f'First 5 dimensions preview: {vector[:5]}')
 
