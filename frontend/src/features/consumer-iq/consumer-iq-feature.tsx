@@ -162,6 +162,10 @@ export function ConsumerIQOnboarding({
       button: HTMLButtonElement
       handler: (event: MouseEvent) => void
     }> = []
+    const submitHandlers: Array<{
+      form: HTMLFormElement
+      handler: (event: Event) => void
+    }> = []
 
     const normalize = (value: string) =>
       value
@@ -222,8 +226,24 @@ export function ConsumerIQOnboarding({
         return
       }
 
+      const forms = Array.from(doc.querySelectorAll("form"))
+      forms.forEach((form) => {
+        const handler = (event: Event) => {
+          if (event.cancelable) {
+            event.preventDefault()
+          }
+          event.stopPropagation()
+        }
+
+        form.addEventListener("submit", handler, true)
+        submitHandlers.push({ form, handler })
+      })
+
       const buttons = Array.from(doc.querySelectorAll("button"))
       buttons.forEach((button) => {
+        if (button.hasAttribute("onclick")) {
+          button.removeAttribute("onclick")
+        }
         const label = normalize(button.textContent ?? "")
         const nextStage = getNextStage(label, stage)
         if (!nextStage) {
@@ -234,6 +254,7 @@ export function ConsumerIQOnboarding({
           if (event.cancelable) {
             event.preventDefault()
           }
+          event.stopImmediatePropagation()
           event.stopPropagation()
           setStage(nextStage)
         }
@@ -256,6 +277,9 @@ export function ConsumerIQOnboarding({
       iframe.removeEventListener("load", handleLoad)
       handlers.forEach(({ button, handler }) => {
         button.removeEventListener("click", handler, true)
+      })
+      submitHandlers.forEach(({ form, handler }) => {
+        form.removeEventListener("submit", handler, true)
       })
     }
   }, [stage])
