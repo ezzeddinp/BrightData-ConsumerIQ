@@ -163,25 +163,58 @@ export function ConsumerIQOnboarding({
       handler: (event: MouseEvent) => void
     }> = []
 
-    const stageActions: Record<OnboardingStage, Record<string, OnboardingStage>> = {
-      "step-1": {
-        continue: "step-2",
-        "complete setup": "ai-process",
-      },
-      "step-2": {
-        back: "step-1",
-        continue: "step-3",
-      },
-      "step-3": {
-        back: "step-2",
-        "next step": "ai-process",
-        "complete setup": "ai-process",
-      },
-      "ai-process": {},
-    }
-
     const normalize = (value: string) =>
-      value.toLowerCase().replace(/\s+/g, " ").trim()
+      value
+        .toLowerCase()
+        .replace(/arrow_forward|chevron_right/gi, " ")
+        .replace(/[^a-z\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+
+    const getNextStage = (
+      label: string,
+      currentStage: OnboardingStage,
+    ): OnboardingStage | null => {
+      if (!label) {
+        return null
+      }
+
+      if (label.includes("back")) {
+        if (currentStage === "step-2") {
+          return "step-1"
+        }
+        if (currentStage === "step-3") {
+          return "step-2"
+        }
+        return null
+      }
+
+      if (label.includes("continue")) {
+        if (currentStage === "step-1") {
+          return "step-2"
+        }
+        if (currentStage === "step-2") {
+          return "step-3"
+        }
+        if (currentStage === "step-3") {
+          return "ai-process"
+        }
+      }
+
+      if (label.includes("next step")) {
+        return "ai-process"
+      }
+
+      if (label.includes("complete setup")) {
+        return "ai-process"
+      }
+
+      if (label.includes("launch dashboard")) {
+        return "ai-process"
+      }
+
+      return null
+    }
 
     const attachHandlers = () => {
       const doc = iframe.contentDocument
@@ -189,11 +222,10 @@ export function ConsumerIQOnboarding({
         return
       }
 
-      const actions = stageActions[stage]
       const buttons = Array.from(doc.querySelectorAll("button"))
       buttons.forEach((button) => {
         const label = normalize(button.textContent ?? "")
-        const nextStage = actions[label]
+        const nextStage = getNextStage(label, stage)
         if (!nextStage) {
           return
         }
