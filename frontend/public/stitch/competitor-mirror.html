@@ -1,0 +1,503 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Competitor Mirror | ConsumerIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ef4444",
+                        "on-background": "#020617",
+                        "on-tertiary-container": "#64748b",
+                        "surface-dim": "#f1f5f9",
+                        "surface-container-low": "#f8fafc",
+                        "primary": "#020617",
+                        "on-secondary-container": "#475569",
+                        "inverse-surface": "#0f172a",
+                        "surface-container-high": "#e2e8f0",
+                        "primary-fixed-dim": "#94a3b8",
+                        "background": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#ffffff",
+                        "inverse-primary": "#f8fafc",
+                        "on-surface": "#020617",
+                        "primary-fixed": "#f1f5f9",
+                        "outline-variant": "#e2e8f0",
+                        "tertiary": "#020617",
+                        "surface": "#ffffff",
+                        "tertiary-fixed-dim": "#cbd5e1",
+                        "on-surface-variant": "#64748b",
+                        "on-primary-container": "#020617",
+                        "tertiary-container": "#f8fafc",
+                        "on-tertiary-fixed-variant": "#475569",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#f1f5f9",
+                        "surface-container-highest": "#f1f5f9",
+                        "primary-container": "#ffffff",
+                        "secondary-fixed": "#f1f5f9",
+                        "secondary-fixed-dim": "#e2e8f0",
+                        "surface-variant": "#f8fafc",
+                        "on-secondary-fixed-variant": "#475569",
+                        "on-tertiary-fixed": "#020617",
+                        "outline": "#cbd5e1",
+                        "on-secondary-fixed": "#020617",
+                        "surface-container": "#f8fafc",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#020617",
+                        "secondary": "#475569",
+                        "surface-tint": "#020617",
+                        "on-error-container": "#7f1d1d",
+                        "tertiary-fixed": "#f1f5f9",
+                        "on-primary-fixed-variant": "#475569",
+                        "error-container": "#fef2f2"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-white text-slate-950 antialiased overflow-x-hidden">
+<!-- SideNavBar based on COMPONENTS_37 -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-slate-200 bg-white flex flex-col py-6 px-4 z-50">
+<div class="px-4 mb-8">
+<h1 class="text-xl font-bold tracking-tight text-slate-950">ConsumerIQ</h1>
+<p class="text-xs text-slate-500">Market Intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 hover:text-slate-950 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 hover:text-slate-950 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+<span>Demand Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 hover:text-slate-950 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span>Persona Decode</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-slate-950 bg-slate-100 rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span>
+<span>Competitor Mirror</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 hover:text-slate-950 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span>Launch Compass</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 hover:text-slate-950 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-slate-100 pt-6">
+<button class="w-full bg-slate-950 text-white text-sm font-medium py-2 rounded-lg hover:bg-slate-800 transition-colors active:scale-95 duration-150" onclick="toggleDrawer()">
+                Founder Chat
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar based on COMPONENTS_37 -->
+<header class="flex justify-between items-center h-16 px-8 sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 text-sm bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-slate-400 focus:border-slate-400 transition-all" placeholder="Search insights..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4 ml-4">
+<button class="p-2 text-slate-500 hover:text-slate-950 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-slate-950 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8twKiBenZMoyqkTDs13VmQ-01uX7ThyhW_SYjHfT6GFIc4U3cH3ZY2J5xHnIsHl4gkWk4o3y_d9s8jp6vRXF1xlT1EjFUnkRciosfpFela9j9elCQTb4WoSMQXDl-ID4v1DNbYEfMN9M1-9LxThv7e5xp_tX1uyVWzJHTWBTlqnBctiW0IypjLBZywczSv-5hzhClElabLnQbIZqGPAQS7kN6f0td_27ZIajOXQFqRkboPx9JJ32LBfW8T0H7U-LSDIRmfm1tDEg">
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-8 max-w-[1280px] w-full mx-auto space-y-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-xs text-slate-500 mb-1">
+<span>Analysis</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-slate-900 font-medium">Competitor Mirror</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight text-slate-950">Competitor Mirror</h2>
+<p class="text-slate-500 mt-1">Real-time market intelligence and relative performance tracking.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-md text-sm font-medium hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                        Last 30 Days
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-950 text-white rounded-md text-sm font-medium hover:bg-slate-800 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Project
+                    </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Search SOV Card -->
+<div class="md:col-span-8 border border-slate-200 rounded-xl bg-white shadow-sm overflow-hidden flex flex-col">
+<div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+<h3 class="text-sm font-semibold text-slate-950">Search Share of Voice (SOV)</h3>
+<button class="text-slate-400 hover:text-slate-950 transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<div class="p-6">
+<div class="flex items-end gap-2 h-48 w-full border-b border-slate-100 pb-2">
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-950 rounded-t-sm transition-all duration-300 hover:bg-slate-800" style="height: 85%;"></div>
+<span class="text-[11px] font-medium text-slate-500 group-hover:text-slate-950 transition-colors">Skintific</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-200 rounded-t-sm transition-all duration-300 hover:bg-slate-300" style="height: 45%;"></div>
+<span class="text-[11px] font-medium text-slate-500 group-hover:text-slate-950 transition-colors">Somethinc</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-100 rounded-t-sm transition-all duration-300 hover:bg-slate-200" style="height: 60%;"></div>
+<span class="text-[11px] font-medium text-slate-500 group-hover:text-slate-950 transition-colors">Avoskin</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-slate-50 rounded-t-sm transition-all duration-300 hover:bg-slate-100" style="height: 30%;"></div>
+<span class="text-[11px] font-medium text-slate-500 group-hover:text-slate-950 transition-colors">Others</span>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<p class="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Leader</p>
+<p class="text-lg font-bold text-slate-950">Skintific</p>
+<p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 12.4%
+                                </p>
+</div>
+<div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<p class="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Growth Leader</p>
+<p class="text-lg font-bold text-slate-950">Somethinc</p>
+<p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 28.1%
+                                </p>
+</div>
+<div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<p class="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Keyword Gap</p>
+<p class="text-lg font-bold text-slate-950">420</p>
+<p class="text-xs text-slate-500 mt-1">Opportunities</p>
+</div>
+<div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
+<p class="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">Ad Spend</p>
+<p class="text-lg font-bold text-slate-950">$12.5k</p>
+<p class="text-xs text-slate-500 mt-1">Daily Avg</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Price Alerts Card -->
+<div class="md:col-span-4 border border-slate-200 rounded-xl bg-white shadow-sm overflow-hidden flex flex-col">
+<div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-950 text-[20px]" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<h3 class="text-sm font-semibold text-slate-950">Price Alerts</h3>
+</div>
+<span class="px-1.5 py-0.5 rounded-full bg-slate-950 text-white text-[10px] font-bold">3 NEW</span>
+</div>
+<div class="p-4 space-y-3 flex-1 overflow-y-auto custom-scrollbar max-h-[420px]">
+<!-- Alert Item -->
+<div class="p-3 border border-slate-100 rounded-lg bg-white hover:bg-slate-50 transition-colors group cursor-pointer">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] px-1.5 py-0.5 font-semibold bg-slate-100 text-slate-600 rounded">Skintific</span>
+<span class="text-[10px] text-slate-400">2h ago</span>
+</div>
+<p class="text-xs font-semibold text-slate-950 mb-1">Mugwort Mask 55g</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-400 line-through">$18.00</span>
+<span class="text-sm font-bold text-slate-950">$12.90</span>
+<span class="text-[10px] font-bold text-red-600 ml-auto">-28%</span>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="p-3 border border-slate-100 rounded-lg bg-white hover:bg-slate-50 transition-colors group cursor-pointer">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] px-1.5 py-0.5 font-semibold bg-slate-100 text-slate-600 rounded">Somethinc</span>
+<span class="text-[10px] text-slate-400">5h ago</span>
+</div>
+<p class="text-xs font-semibold text-slate-950 mb-1">Low pH Cleanser 100ml</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-400 line-through">$14.00</span>
+<span class="text-sm font-bold text-slate-950">$11.20</span>
+<span class="text-[10px] font-bold text-red-600 ml-auto">-20%</span>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="p-3 border border-slate-100 rounded-lg bg-white hover:bg-slate-50 transition-colors group cursor-pointer">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] px-1.5 py-0.5 font-semibold bg-slate-100 text-slate-600 rounded">Avoskin</span>
+<span class="text-[10px] text-slate-400">1d ago</span>
+</div>
+<p class="text-xs font-semibold text-slate-950 mb-1">Refining Toner</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-400 line-through">$22.00</span>
+<span class="text-sm font-bold text-slate-950">$15.40</span>
+<span class="text-[10px] font-bold text-red-600 ml-auto">-30%</span>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-slate-100">
+<button class="w-full py-2 text-xs font-medium text-slate-500 hover:text-slate-950 transition-colors">View All Monitoring</button>
+</div>
+</div>
+<!-- Competitor Matrix -->
+<div class="md:col-span-12 border border-slate-200 rounded-xl bg-white shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+<h3 class="text-sm font-semibold text-slate-950">Competitor Matrix</h3>
+<div class="flex gap-2">
+<button class="p-1.5 border border-slate-200 rounded-md hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-slate-500">download</span>
+</button>
+<button class="p-1.5 border border-slate-200 rounded-md hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-slate-500">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50/50 border-b border-slate-100">
+<tr>
+<th class="px-6 py-3 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Brand Name</th>
+<th class="px-6 py-3 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Sentiment Score</th>
+<th class="px-6 py-3 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Advantage Factor</th>
+<th class="px-6 py-3 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Est. Monthly Rev</th>
+<th class="px-6 py-3 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Market Position</th>
+<th class="px-6 py-3 text-right font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Somethinc -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 overflow-hidden border border-slate-200">
+<img alt="Somethinc" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_oV_Nfg_LzY0COr-8I-aznSGfrIwyfIplWk1jwSn8bAxei1x9LxK9af-rQ_JOD0cxeYoa6lWT2k-t2dFv9vQ5-29hClq8GcMbILVZsmhl2r9__CVcxa5z3kv36QJre89Dumz9QKmWC2tqQ59D8oR9xBLME3Bfr1OdAAhpLT8xiF4bCNeoipnpJp_PBFHzk_V3sW8-sKRLmYrpsbh9MvtvCateHz5n-BHM4pTgN9Lgohk7WK9pCI9vExXSZa3DwVoNTCA6njN7Bkc">
+</div>
+<div>
+<p class="font-semibold text-slate-950">Somethinc</p>
+<p class="text-[11px] text-slate-500">Beauty &amp; Skincare</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-950" style="width: 78%;"></div>
+</div>
+<span class="text-[12px] font-medium text-slate-950">7.8</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium border border-slate-200">High Local Affinity</span>
+</td>
+<td class="px-6 py-4">
+<p class="font-mono text-xs text-slate-600">$4.2M</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-emerald-600 text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Mainstream Leader
+                                        </div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-950 hover:underline font-semibold text-[12px]">Analyze</button>
+</td>
+</tr>
+<!-- Avoskin -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 overflow-hidden border border-slate-200">
+<img alt="Avoskin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Cz8gJUynENs2OAN0KOIG7Yn9HdnqyAhY08RljyCSLMRiv0tYd-1OK0xRym70DEpbtr0mLAsnPkPkL_EweJSH-T8wSzzU0PM19fTc6GlkxdUU_teF6a6gDJZdnDuPMsEOxLVPPjtLDTfnQb5ycKlPRywL4XQBKe2lOtMsVMgqDGrmBjtcJB9klkYFRhwy0tQKvMDysZy1rLx-cE63SNdreMUHp3vLydqJOT3Vplpcw_ObyfGkO3rBEADVpUgkP-qHIDncGIYn_74">
+</div>
+<div>
+<p class="font-semibold text-slate-950">Avoskin</p>
+<p class="text-[11px] text-slate-500">Sustainable Skincare</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-950" style="width: 82%;"></div>
+</div>
+<span class="text-[12px] font-medium text-slate-950">8.2</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium border border-slate-200">Clean Formulation</span>
+</td>
+<td class="px-6 py-4">
+<p class="font-mono text-xs text-slate-600">$3.1M</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-slate-500 text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">horizontal_rule</span> Steady Challenger
+                                        </div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-950 hover:underline font-semibold text-[12px]">Analyze</button>
+</td>
+</tr>
+<!-- Skintific -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 overflow-hidden border border-slate-200">
+<img alt="Skintific" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASxj0hNv_urhZCT_cAUr0VjZA0ph9EtK-WF0LdebQE1R0B_QdkgE4mm2toArRAFsf-bjdAmbuS5P1NAvVn5SiMJL5Hr7Pzb-8n9eYb4KJO0l0ylJ--r08jPuOUG2nfT2f1Poc97v-SM4vtXwP-vwiP6nuVCUen0ZfhDDtWOTWbE_njEbtULXwAxfq8SHA8io80Fhc7IWXr63Gkg_9_zNrBUlIfR2KYzrQZkCQrGW2H7TVyMBrIspIljt9U34hmkDbK3OQqUz9txjU">
+</div>
+<div>
+<p class="font-semibold text-slate-950">Skintific</p>
+<p class="text-[11px] text-slate-500">Clinical Barrier Tech</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-950" style="width: 91%;"></div>
+</div>
+<span class="text-[12px] font-medium text-slate-950">9.1</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium border border-slate-200">Supply Chain Edge</span>
+</td>
+<td class="px-6 py-4">
+<p class="font-mono text-xs text-slate-600">$6.8M</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-emerald-600 text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Fast Growth Giant
+                                        </div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-950 hover:underline font-semibold text-[12px]">Analyze</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<footer class="p-8 border-t border-slate-100 bg-white mt-auto">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[11px] text-slate-400">© 2024 ConsumerIQ Enterprise. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-[11px] text-slate-400 hover:text-slate-950 transition-colors" href="#">Data Policy</a>
+<a class="text-[11px] text-slate-400 hover:text-slate-950 transition-colors" href="#">Terms</a>
+<a class="text-[11px] text-slate-400 hover:text-slate-950 transition-colors" href="#">System Status</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Founder AI Drawer - based on SCREEN_26 style -->
+<div class="hidden fixed inset-0 z-[60] overflow-hidden pointer-events-none" id="drawer">
+<div class="absolute inset-0 bg-slate-900/10 backdrop-blur-[2px] pointer-events-auto" onclick="toggleDrawer()"></div>
+<aside class="fixed right-0 top-0 h-screen w-[400px] bg-white border-l border-slate-200 shadow-2xl flex flex-col pointer-events-auto transition-transform duration-300 transform translate-x-full" id="drawer-content">
+<div class="p-6 border-b border-slate-100 flex justify-between items-start">
+<div>
+<h2 class="text-lg font-bold text-slate-950">Founder AI</h2>
+<p class="text-xs text-slate-500">Always active &amp; ready to assist</p>
+</div>
+<button class="p-1 text-slate-400 hover:text-slate-950 rounded-md hover:bg-slate-50 transition-all" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+<!-- AI Message -->
+<div class="flex flex-col gap-1.5 max-w-[90%]">
+<div class="bg-slate-50 border border-slate-100 p-4 rounded-xl rounded-tl-none">
+<p class="text-sm text-slate-700 leading-relaxed">
+                            Analyzing competitive movements... I've noticed <span class="font-bold">Skintific</span> increased their SOV by 12% this week by targeting "barrier repair" keywords. Would you like a breakdown of their top-performing search terms?
+                        </p>
+</div>
+<span class="text-[10px] text-slate-400 px-1">2m ago</span>
+</div>
+<!-- User Message -->
+<div class="flex flex-col gap-1.5 max-w-[90%] ml-auto items-end">
+<div class="bg-slate-950 text-white p-4 rounded-xl rounded-tr-none shadow-sm">
+<p class="text-sm leading-relaxed">
+                            Compare their growth against Somethinc's latest campaign performance.
+                        </p>
+</div>
+<span class="text-[10px] text-slate-400 px-1">Just now</span>
+</div>
+</div>
+<div class="p-6 border-t border-slate-100 bg-slate-50/30">
+<div class="relative group">
+<input class="w-full pl-4 pr-12 py-3 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-950/5 focus:border-slate-950 transition-all shadow-sm" placeholder="Ask intelligence..." type="text">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-950 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-600 hover:bg-slate-50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span> Summary
+                    </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-md text-[11px] font-semibold text-slate-600 hover:bg-slate-50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">history</span> History
+                    </button>
+</div>
+</div>
+</aside>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-slate-950 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all z-40 border border-slate-800" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-[28px]">smart_toy</span>
+</button>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const content = document.getElementById('drawer-content');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    content.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                content.classList.add('translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+    </script>
+</body></html>

@@ -14,6 +14,10 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable'
+import {
+  ConsumerIQDashboard,
+  ConsumerIQOnboarding,
+} from '@/features/consumer-iq/consumer-iq-feature'
 import { cn } from '@/lib/utils'
 import { ChatComposer } from './components/chat-composer'
 import { ChatConversation } from './components/chat-conversation'
@@ -31,6 +35,7 @@ export function LlmChatFeature() {
   const streamAbortRef = useRef(false)
   const pendingResponseTimeoutRef = useRef<number | null>(null)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [hasOnboarded, setHasOnboarded] = useState(false)
   const [text, setText] = useState('')
   const [status, setStatus] = useState<ChatStatus>('ready')
   const [messages, setMessages] = useState<MessageType[]>(initialMessages)
@@ -243,6 +248,14 @@ export function LlmChatFeature() {
     </div>
   )
 
+  if (!hasOnboarded) {
+    return (
+      <main className="min-h-screen bg-background text-foreground">
+        <ConsumerIQOnboarding onComplete={() => setHasOnboarded(true)} />
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <ResizablePanelGroup
@@ -250,7 +263,7 @@ export function LlmChatFeature() {
         orientation="horizontal"
       >
         <ResizablePanel defaultSize="62%" minSize="42%">
-          <div className="min-h-screen bg-background" aria-hidden="true" />
+          <ConsumerIQDashboard />
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel
@@ -271,10 +284,11 @@ export function LlmChatFeature() {
         </ResizablePanel>
       </ResizablePanelGroup>
 
-      <div className="flex min-h-screen justify-end sm:hidden">
+      <div className="relative min-h-screen sm:hidden">
+        <ConsumerIQDashboard className="min-h-screen" />
         <ChatPanel
           className={cn(
-            'transition-[width] duration-200',
+            'fixed right-0 top-0 z-20 h-full transition-[width] duration-200',
             isSidebarOpen ? 'w-full' : 'w-16',
           )}
           isOpen={isSidebarOpen}

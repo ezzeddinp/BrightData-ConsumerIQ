@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Market Preferences - Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Shared Component Injection Logic Implementation -->
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#e1dfdf",
+                        "inverse-surface": "#2f3131",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1b1b1b",
+                        "on-secondary-container": "#626262",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "outline": "#7e7576",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5e5e5e",
+                        "surface-dim": "#dadada",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#5e5e5e",
+                        "outline-variant": "#cfc4c5",
+                        "surface": "#f9f9f9",
+                        "tertiary": "#000000",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary-container": "#848484",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-primary-container": "#848484",
+                        "on-primary-fixed-variant": "#474747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-base": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-margin-mobile md:px-margin-desktop py-12">
+<div class="w-full max-w-[640px] bg-surface-container-lowest border border-surface-variant rounded-xl overflow-hidden">
+<div class="p-8 md:p-12 space-y-10">
+<!-- Header Section -->
+<header class="space-y-6">
+<!-- Progress Bar Moved Inside -->
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-700 ease-in-out" style="width: 50%;"></div>
+</div>
+<div class="space-y-2">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">What are we analyzing?</h1>
+<p class="font-body-base text-body-base text-on-surface-variant opacity-80">Define the industry and region you want to dominate.</p>
+</div>
+</header>
+<!-- Form Section -->
+<div class="space-y-8">
+<!-- Workspace Name -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant" for="workspace-name">Workspace Name</label>
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-3 font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-outline-variant" id="workspace-name" name="workspace-name" placeholder="e.g. My Market Research" type="text">
+</div>
+<!-- Row: Industry & Region -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant" for="industry">Industry</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-3 font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" id="industry" name="industry">
+<option disabled="" selected="" value="">Select industry</option>
+<option value="skincare">Skincare</option>
+<option value="saas">SaaS</option>
+<option value="fintech">Fintech</option>
+<option value="ecommerce">E-commerce</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant" for="region">Region</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-3 font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" id="region" name="region">
+<option disabled="" selected="" value="">Select region</option>
+<option value="indonesia">Indonesia</option>
+<option value="usa">United States</option>
+<option value="singapore">Singapore</option>
+<option value="germany">Germany</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Marketplace Focus -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant" for="marketplace">Primary Marketplace Focus</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-3 font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" id="marketplace" name="marketplace">
+<option disabled="" selected="" value="">Select marketplace</option>
+<option value="shopee">Shopee</option>
+<option value="tokopedia">Tokopedia</option>
+<option value="tiktok">TikTok Shop</option>
+<option value="all">All</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Tip Box -->
+<div class="bg-surface-container border border-surface-variant rounded-lg p-4 flex gap-4 items-start">
+<span class="material-symbols-outlined text-on-surface text-[20px] mt-0.5" data-icon="lightbulb">lightbulb</span>
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps font-bold">Targeting Tip</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Narrowing your region helps our AI models surface localized cultural nuances that broader searches often miss.</p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-6 flex items-center justify-between border-t border-surface-variant">
+<button class="px-6 py-2.5 rounded-lg font-body-sm text-body-sm text-secondary hover:text-primary transition-colors hover:bg-surface-container-low">
+                        Back
+                    </button>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-lg font-body-sm text-body-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                        Next Step
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Subtle Decorative Branding element -->
+<div class="bg-surface-container-low px-8 py-4 flex justify-between items-center opacity-60">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-primary rounded-sm"></div>
+<span class="font-mono-label text-mono-label">ANALYSIS_CORE_V2</span>
+</div>
+<span class="font-mono-label text-mono-label uppercase">Step 02/04</span>
+</div>
+</div>
+</main>
+<!-- Visual Polish: Background Grid Effect -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(#000 1px, transparent 0); background-size: 40px 40px;">
+</div>
+<script>
+        // Micro-interaction for form completion perception
+        const inputs = document.querySelectorAll('input, select');
+        const progressBar = document.querySelector('.bg-primary.h-full');
+        
+        inputs.forEach(input => {
+            input.addEventListener('change', () => {
+                let filled = 0;
+                inputs.forEach(i => { if(i.value) filled++ });
+                // Animating from 50% to 60% as user fills current step
+                const progress = 50 + (filled / inputs.length * 10);
+                progressBar.style.width = progress + '%';
+            });
+        });
+    </script>
+</body></html>

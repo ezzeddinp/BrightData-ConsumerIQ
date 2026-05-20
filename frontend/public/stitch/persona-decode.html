@@ -1,0 +1,385 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Persona Decode - ConsumerIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#444749",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-primary-fixed-variant": "#474747",
+                    "secondary-fixed": "#d3e4fe",
+                    "secondary": "#505f76",
+                    "tertiary-container": "#191c1e",
+                    "primary": "#000000",
+                    "surface-tint": "#5e5e5e",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-primary-container": "#848484",
+                    "secondary-container": "#d0e1fb",
+                    "outline": "#7e7576",
+                    "on-background": "#131b2e",
+                    "outline-variant": "#cfc4c5",
+                    "surface-variant": "#dae2fd",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-low": "#f2f3ff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "primary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e2e7ff",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#283044",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-secondary-container": "#54647a",
+                    "surface": "#faf8ff",
+                    "tertiary": "#000000",
+                    "background": "#faf8ff",
+                    "on-tertiary-fixed": "#191c1e",
+                    "surface-dim": "#d2d9f4",
+                    "on-surface": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eaedff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#818486",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e0e3e5",
+                    "inverse-primary": "#c6c6c6",
+                    "on-surface-variant": "#4c4546",
+                    "primary-container": "#1b1b1b",
+                    "surface-container-highest": "#dae2fd",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-xs": "4px",
+                    "stack-sm": "8px",
+                    "stack-xl": "48px",
+                    "container-max": "1280px",
+                    "margin-desktop": "32px",
+                    "stack-md": "16px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "stack-lg": "24px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Geist"],
+                    "headline-sm": ["Geist"],
+                    "label-sm": ["Geist"],
+                    "code": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "body-md": ["Geist"],
+                    "display": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "label-md": ["Geist"],
+                    "title": ["Geist"],
+                    "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "title": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; background-color: #ffffff; color: #09090b; } .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; } .custom-scrollbar::-webkit-scrollbar { width: 4px; } .custom-scrollbar::-webkit-scrollbar-track { background: transparent; } .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; } .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid #e2e8f0; } .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }</style>
+</head>
+<body class="bg-white text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-white border-r border-outline-variant z-50">
+<div class="flex flex-col h-full py-6 px-4 font-['Inter']">
+<div class="px-4 mb-8"><h1 class="text-lg font-bold tracking-tight text-primary">ConsumerIQ</h1><p class="text-xs text-on-surface-variant">Market Intelligence</p></div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-sm font-medium">Dashboard</span></a><a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">trending_up</span><span class="text-sm font-medium">Demand Pulse</span></a><a class="flex items-center gap-3 px-4 py-2 text-primary font-semibold bg-secondary-container rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="text-sm">Persona Decode</span></a><a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="text-sm font-medium">Competitor Mirror</span></a><a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span class="text-sm font-medium">Launch Compass</span></a><a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="text-sm font-medium">Settings</span></a></nav>
+<div class="mt-auto px-4 pt-4 border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-lg text-sm font-medium hover:opacity-90 active:scale-95 transition-all" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+                    Founder Chat
+                </button>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-0 md:ml-64 min-h-screen">
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center w-full h-16 px-6 sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md cursor-pointer">Overview</span>
+<span class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md cursor-pointer">Network</span>
+<span class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md cursor-pointer">Status</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg font-label-md text-label-md hover:opacity-90 active:opacity-70 transition-all">New Project</button>
+<div class="flex gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">chat_bubble</span>
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a young male executive with a confident smile, wearing a dark blazer over a crisp white shirt, set against a blurred high-end office background with soft bokeh lighting. The overall aesthetic is clean, professional, and sophisticated, aligning with a developer-centric minimalism platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxFgeKhZg7o4LuRHMIdjfg-Fo9RClMxhTLE-bSKRhMynqHy8VbmhGDmCI3UGjWU_RGdnmb_ZlePcDfsYEEaQPOLRBlGkHqqPsrS-xXVySJ2E_Xcv-fp8I2r7aN9hnjacOkyaNQd52IhWHIpC6BtgncbFvR2sSiNhH1OeWY00Zd5WkQpcc1UoS64xdwI3UtVRl-yjn0oqJ3nM65nWofXdp96p32DjM24CKEIrtR-OUKrMOK95BrTnfz-dFhlduVB1fDG-q5JSU9_qg">
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Breadcrumbs & Header -->
+<div class="mb-10">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-2">
+<span class="">Audiences</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">Persona Decode</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Persona Decode</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg mt-1">Deep segmentation and behavioral mapping for Q3 Strategic Planning.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="bento-grid">
+<!-- Highlighted Segment: Stressed Young Professional -->
+<div class="col-span-12 lg:col-span-7 bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between border border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[180px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div class="z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">Target Segment</span>
+<span class="flex h-2 w-2 rounded-full bg-emerald-400"></span>
+<span class="text-on-primary/70 font-label-sm text-label-sm">High Priority</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Stressed Young Professional</h3>
+<p class="text-on-primary/80 font-body-lg text-body-lg max-w-lg">High-income urban dwellers prioritizing efficiency over cost. They exhibit high anxiety levels regarding time management and are likely to adopt premium automation tools.</p>
+</div>
+<div class="z-10 mt-12 grid grid-cols-3 gap-8">
+<div>
+<p class="text-on-primary/50 font-label-sm text-label-sm uppercase tracking-wider">Market Size</p>
+<p class="font-headline-sm text-headline-sm">1.2M</p>
+</div>
+<div>
+<p class="text-on-primary/50 font-label-sm text-label-sm uppercase tracking-wider">Avg. LTV</p>
+<p class="font-headline-sm text-headline-sm">$4.8k</p>
+</div>
+<div>
+<p class="text-on-primary/50 font-label-sm text-label-sm uppercase tracking-wider">Churn Risk</p>
+<p class="font-headline-sm text-headline-sm">12.4%</p>
+</div>
+</div>
+</div>
+<!-- Pain Point Clusters -->
+<div class="col-span-12 lg:col-span-5 border border-outline-variant rounded-xl p-6 bg-white flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-title text-title text-primary">Pain Point Clusters</h4>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">more_horiz</span>
+</div>
+<div class="flex-1 space-y-4">
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-primary">Cognitive Overload</span>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded">MAJOR</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+<p class="mt-2 text-on-surface-variant font-label-sm text-label-sm">88% of users report task fatigue by 4 PM.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-primary">Fragmented Workflows</span>
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded">MID</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[62%]"></div>
+</div>
+<p class="mt-2 text-on-surface-variant font-label-sm text-label-sm">Users switch between 7+ apps per hour.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-primary">Notification Blindness</span>
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded">LOW</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[34%]"></div>
+</div>
+<p class="mt-2 text-on-surface-variant font-label-sm text-label-sm">High opt-out rate on mobile push alerts.</p>
+</div>
+</div>
+</div>
+<!-- Willingness-to-Pay Range Chart -->
+<div class="col-span-12 lg:col-span-8 border border-outline-variant rounded-xl p-8 bg-white overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="font-title text-title text-primary">Willingness-to-Pay Range</h4>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Price elasticity across the professional segment.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm">Segment Mean</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+<span class="font-label-sm text-label-sm">Market Bench</span>
+</div>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-4 relative px-2">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-x-0 top-0 h-[1px] bg-outline-variant/30"></div>
+<div class="absolute inset-x-0 top-1/4 h-[1px] bg-outline-variant/30"></div>
+<div class="absolute inset-x-0 top-2/4 h-[1px] bg-outline-variant/30"></div>
+<div class="absolute inset-x-0 top-3/4 h-[1px] bg-outline-variant/30"></div>
+<!-- Price Bars -->
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-variant hover:bg-primary/20 transition-colors h-24 rounded-t-sm relative"></div>
+<div class="w-full bg-primary h-32 rounded-t-sm relative -mt-12 group-hover:scale-110 transition-transform">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$45</div>
+</div>
+<span class="mt-4 font-label-sm text-label-sm text-on-surface-variant">L1 Core</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-variant h-36 rounded-t-sm"></div>
+<div class="w-full bg-primary h-48 rounded-t-sm -mt-24 group-hover:scale-110 transition-transform">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$89</div>
+</div>
+<span class="mt-4 font-label-sm text-label-sm text-on-surface-variant">L2 Pro</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-variant h-44 rounded-t-sm"></div>
+<div class="w-full bg-primary h-60 rounded-t-sm -mt-32 group-hover:scale-110 transition-transform">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$149</div>
+</div>
+<span class="mt-4 font-label-sm text-label-sm text-on-surface-variant">L3 Expert</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-variant h-32 rounded-t-sm"></div>
+<div class="w-full bg-primary h-40 rounded-t-sm -mt-20 group-hover:scale-110 transition-transform">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$299</div>
+</div>
+<span class="mt-4 font-label-sm text-label-sm text-on-surface-variant">L4 Org</span>
+</div>
+</div>
+</div>
+<!-- Demographic Micro-stats -->
+<div class="col-span-12 lg:col-span-4 border border-outline-variant rounded-xl p-8 bg-surface-container-lowest">
+<h4 class="font-title text-title text-primary mb-6">Demographic Mix</h4>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">home_pin</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase">Primary Region</p>
+<p class="font-title text-title">North America (72%)</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase">Age Median</p>
+<p class="font-title text-title">28 - 34 Years</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">devices</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase">Dominant Platform</p>
+<p class="font-title text-title">iOS &amp; macOS (84%)</p>
+</div>
+</div>
+<button class="w-full mt-4 py-3 border border-primary text-primary font-label-md text-label-md rounded-lg hover:bg-primary hover:text-white transition-all">View Raw Data</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- NavigationDrawer Anchor (Founder AI) -->
+<div class="hidden xl:flex flex-col h-screen w-80 fixed right-0 top-0 z-50 bg-surface-container-lowest border-l border-outline-variant shadow-sm transform translate-x-full transition-transform duration-300" id="ai-drawer">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<div>
+<h2 class="font-title text-title text-primary">Founder AI</h2>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Always active</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary" onclick="toggleDrawer()">close</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+<div class="bg-surface-container-high p-3 rounded-lg rounded-tr-none ml-4">
+<p class="font-body-md text-body-md text-primary">Analyzing the 'Stressed Young Professional' segment... I've detected a 15% correlation between churn and lack of mobile offline sync.</p>
+<span class="text-[10px] text-on-surface-variant mt-2 block">2m ago</span>
+</div>
+<div class="bg-secondary-container/50 p-3 rounded-lg rounded-tl-none mr-4">
+<p class="font-body-md text-body-md text-primary">Should we prioritize the mobile sync feature for the next sprint?</p>
+<span class="text-[10px] text-on-secondary-container mt-2 block">Just now</span>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant">
+<div class="relative">
+<input class="w-full bg-surface-container-low border-outline-variant rounded-lg px-4 py-3 pr-10 focus:ring-1 focus:ring-primary focus:border-primary text-body-md" placeholder="Ask Founder AI..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant">send</span>
+</div>
+<div class="mt-4 flex gap-2">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-secondary-container/50 rounded-md font-label-sm text-label-sm text-primary cursor-pointer hover:bg-secondary-container">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+<span class="">Summary</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-secondary-container/50 rounded-md font-label-sm text-label-sm text-primary cursor-pointer hover:bg-secondary-container">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span class="">History</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Trigger for AI -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">forum</span>
+</button>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('ai-drawer');
+            drawer.classList.toggle('hidden');
+            if (!drawer.classList.contains('hidden')) {
+                setTimeout(() => {
+                    drawer.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        // Micro-interactions for chart bars
+        document.querySelectorAll('.group').forEach(group => {
+            group.addEventListener('mouseenter', () => {
+                // Potential for dynamic JS updates or sounds
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

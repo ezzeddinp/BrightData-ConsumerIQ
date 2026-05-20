@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Building your Intelligence Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-container": "#e1dfdf",
+                        "inverse-surface": "#2f3131",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "tertiary-container": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1b1b1b",
+                        "on-secondary-container": "#626262",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "outline": "#7e7576",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5e5e5e",
+                        "surface-dim": "#dadada",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-tint": "#5e5e5e",
+                        "outline-variant": "#cfc4c5",
+                        "surface": "#f9f9f9",
+                        "tertiary": "#000000",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary-container": "#848484",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-primary-container": "#848484",
+                        "on-primary-fixed-variant": "#474747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max-width": "640px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-base": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .circular-progress {
+            background: radial-gradient(closest-side, #ffffff 79%, transparent 80% 100%),
+                        conic-gradient(#000000 93%, #eeeeee 0);
+        }
+        .progress-bar-fill {
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            transform-origin: left;
+            animation: scaleX 2s ease-out forwards;
+        }
+        @keyframes scaleX {
+            from { transform: scaleX(0.75); }
+            to { transform: scaleX(1); }
+        }
+        .task-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background font-body-base text-on-background selection:bg-primary-fixed antialiased">
+<!-- Main Content Shell -->
+<main class="min-h-screen flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop">
+<div class="w-full max-w-[640px] flex flex-col items-center space-y-12">
+<!-- Progress Bar -->
+<div class="w-full">
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-full h-full bg-primary progress-bar-fill"></div>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="text-center space-y-4">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">
+                    Building your Intelligence Engine...
+                </h1>
+<p class="text-on-surface-variant font-body-base text-body-base max-w-md mx-auto">
+                    We're synthesizing your custom market parameters into a live, predictive data model.
+                </p>
+</section>
+<!-- Circular Progress Indicator -->
+<div class="relative w-48 h-48 flex items-center justify-center">
+<div class="circular-progress w-full h-full rounded-full flex items-center justify-center shadow-sm">
+<span class="font-headline-md text-display-lg text-primary">93%</span>
+</div>
+<!-- Subtle ambient glow -->
+<div class="absolute inset-0 bg-primary opacity-[0.02] rounded-full blur-2xl -z-10"></div>
+</div>
+<!-- Task List Card -->
+<div class="w-full border border-outline-variant bg-surface-container-lowest rounded-xl p-6 space-y-4">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high">
+<span class="font-mono-label text-mono-label uppercase tracking-widest text-on-surface-variant">System Processes</span>
+<span class="font-mono-label text-mono-label text-on-surface-variant">4/5 Active</span>
+</div>
+<ul class="space-y-4">
+<li class="flex items-center justify-between task-fade-in" style="animation-delay: 100ms;">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Establishing secure connection</span>
+</div>
+<span class="font-mono-label text-[11px] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">DONE</span>
+</li>
+<li class="flex items-center justify-between task-fade-in" style="animation-delay: 300ms;">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Connecting API infrastructure</span>
+</div>
+<span class="font-mono-label text-[11px] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">DONE</span>
+</li>
+<li class="flex items-center justify-between task-fade-in" style="animation-delay: 500ms;">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Syncing historical market data</span>
+</div>
+<span class="font-mono-label text-[11px] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">DONE</span>
+</li>
+<li class="flex items-center justify-between task-fade-in" style="animation-delay: 700ms;">
+<div class="flex items-center space-x-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<div class="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">Optimizing predictive algorithms</span>
+</div>
+<span class="font-mono-label text-[11px] text-primary animate-pulse">RUNNING</span>
+</li>
+<li class="flex items-center justify-between opacity-40">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface">Finalizing dashboard interface</span>
+</div>
+<span class="font-mono-label text-[11px] text-on-surface-variant">QUEUED</span>
+</li>
+</ul>
+</div>
+<!-- Action Area -->
+<div class="w-full flex flex-col items-center space-y-8">
+<button class="w-full md:w-auto md:min-w-[240px] bg-secondary text-on-secondary opacity-50 cursor-not-allowed font-body-base text-body-base px-8 py-3 rounded-lg transition-all duration-200" disabled="">
+                    Launch Dashboard
+                </button>
+<!-- Info Cards Grid -->
+<div class="grid grid-cols-2 gap-4 w-full">
+<div class="border border-outline-variant rounded-lg p-4 bg-surface-container-lowest flex items-center space-x-4">
+<div class="bg-surface-container p-2 rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Speed</p>
+<p class="font-headline-md text-body-base text-primary">0.4s Latency</p>
+</div>
+</div>
+<div class="border border-outline-variant rounded-lg p-4 bg-surface-container-lowest flex items-center space-x-4">
+<div class="bg-surface-container p-2 rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="database">database</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Data Points</p>
+<p class="font-headline-md text-body-base text-primary">12.4M Analyzed</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Example of a simple micro-interaction: update the "Optimizing" task after some time
+            setTimeout(() => {
+                const tasks = document.querySelectorAll('li');
+                const optimizationTask = tasks[3];
+                if(optimizationTask) {
+                    optimizationTask.querySelector('.animate-spin').parentElement.innerHTML = '<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: \'FILL\' 1;">check_circle</span>';
+                    optimizationTask.querySelector('.animate-pulse').textContent = 'DONE';
+                    optimizationTask.querySelector('.animate-pulse').classList.remove('animate-pulse', 'text-primary');
+                    optimizationTask.querySelector('span:last-child').classList.add('text-on-surface-variant', 'bg-surface-container');
+                    
+                    // Unlock the final task
+                    const finalTask = tasks[4];
+                    finalTask.classList.remove('opacity-40');
+                    finalTask.querySelector('div').innerHTML = `
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <div class="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                        <span class="font-body-sm text-body-sm text-on-surface">Finalizing dashboard interface</span>
+                    `;
+                    finalTask.querySelector('span:last-child').textContent = 'RUNNING';
+                    finalTask.querySelector('span:last-child').classList.add('text-primary', 'animate-pulse');
+                }
+            }, 4500);
+        });
+    </script>
+</body></html>

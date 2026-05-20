@@ -1,0 +1,233 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Intelligence Survey - Targeting the White Space</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#f3f3f3",
+            "surface-container-high": "#e8e8e8",
+            "on-tertiary": "#ffffff",
+            "background": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "surface-variant": "#e2e2e2",
+            "inverse-on-surface": "#f0f1f1",
+            "surface-bright": "#f9f9f9",
+            "secondary-container": "#e1dfdf",
+            "inverse-surface": "#2f3131",
+            "primary-fixed": "#e2e2e2",
+            "secondary-fixed-dim": "#c7c6c6",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed-variant": "#474747",
+            "on-secondary-fixed-variant": "#464747",
+            "tertiary-container": "#1b1b1b",
+            "on-primary-fixed": "#1b1b1b",
+            "on-primary": "#ffffff",
+            "primary-container": "#1b1b1b",
+            "on-secondary-container": "#626262",
+            "primary": "#000000",
+            "on-tertiary-fixed": "#1b1b1b",
+            "inverse-primary": "#c6c6c6",
+            "outline": "#7e7576",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "secondary-fixed": "#e4e2e2",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "secondary": "#5e5e5e",
+            "surface-dim": "#dadada",
+            "on-surface-variant": "#4c4546",
+            "on-secondary-fixed": "#1b1c1c",
+            "on-background": "#1a1c1c",
+            "primary-fixed-dim": "#c6c6c6",
+            "surface-tint": "#5e5e5e",
+            "outline-variant": "#cfc4c5",
+            "surface": "#f9f9f9",
+            "tertiary": "#000000",
+            "tertiary-fixed": "#e2e2e2",
+            "on-tertiary-container": "#848484",
+            "surface-container-highest": "#e2e2e2",
+            "on-primary-container": "#848484",
+            "on-primary-fixed-variant": "#474747",
+            "accent-blue": "#0070f3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "mono-label": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-base": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-caps": ["Inter"]
+          },
+          "fontSize": {
+            "mono-label": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #9ca3af;
+    }
+    .slider-thumb::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #000000;
+      cursor: pointer;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px #e2e2e2;
+    }
+    .slider-thumb::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: #000000;
+      cursor: pointer;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px #e2e2e2;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<main class="flex-grow flex items-center justify-center px-margin-mobile md:px-margin-desktop py-12">
+<!-- Focused Centered Container -->
+<div class="w-full max-w-[640px] animate-in fade-in slide-in-from-bottom-4 duration-1000">
+<!-- Card Structure -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-8 md:p-12">
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-container rounded-full mb-10 overflow-hidden">
+<div class="bg-primary h-full transition-all duration-700 ease-in-out" style="width: 75%;"></div>
+</div>
+<!-- Header Section -->
+<header class="mb-10">
+<div class="inline-flex items-center space-x-2 mb-4">
+<span class="text-mono-label font-mono-label text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">STEP 03/04</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-primary mb-3">Targeting the White Space.</h1>
+<p class="text-body-base font-body-base text-secondary">Help our AI focus on the most relevant signals.</p>
+</header>
+<!-- Survey Content -->
+<section class="space-y-8">
+<!-- Competitors Input Group -->
+<div class="space-y-4">
+<label class="text-label-caps font-label-caps text-on-surface-variant block uppercase">Top 3 Competitors</label>
+<div class="space-y-3">
+<input class="w-full h-11 px-4 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="Primary direct competitor" type="text">
+<input class="w-full h-11 px-4 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="Secondary market player" type="text">
+<input class="w-full h-11 px-4 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="Emerging challenger" type="text">
+</div>
+</div>
+<!-- Search Intent Keywords Textarea -->
+<div class="space-y-4">
+<label class="text-label-caps font-label-caps text-on-surface-variant block uppercase">Search Intent Keywords</label>
+<textarea class="w-full p-4 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="Comma-separated terms (e.g., best task manager, productivity apps for teams...)" rows="3"></textarea>
+</div>
+<!-- Ideal Customer Segment Dropdown -->
+<div class="space-y-4">
+<label class="text-label-caps font-label-caps text-on-surface-variant block uppercase">Ideal Customer Segment</label>
+<div class="relative">
+<select class="w-full h-11 px-4 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary transition-all appearance-none cursor-pointer">
+<option disabled="" selected="" value="">Select primary segment...</option>
+<option value="gen-z">Gen Z</option>
+<option value="busy-professionals">Busy Professionals</option>
+<option value="budget-seekers">Budget Seekers</option>
+<option value="tech-early-adopters">Tech Early Adopters</option>
+<option value="enterprise">Enterprise / B2B</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Pain Point Textarea -->
+<div class="space-y-4">
+<label class="text-label-caps font-label-caps text-on-surface-variant block uppercase">Biggest Consumer Pain Point</label>
+<textarea class="w-full p-4 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="Describe the friction your target audience experiences most frequently..." rows="4"></textarea>
+</div>
+<!-- Price Range Slider -->
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<label class="text-label-caps font-label-caps text-on-surface-variant block uppercase">Target Price Range</label>
+<span class="text-mono-label font-mono-label text-primary" id="priceDisplay">$49 — $499</span>
+</div>
+<div class="relative pt-2">
+<input class="slider-thumb w-full h-1.5 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-primary" max="1000" min="0" oninput="updatePrice(this.value)" type="range" value="499">
+<div class="flex justify-between mt-3 text-[10px] font-mono-label text-on-secondary-container opacity-60">
+<span>$0</span>
+<span>$500</span>
+<span>$1000+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<footer class="mt-12 pt-8 border-t border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-8 py-2.5 text-body-sm font-body-sm text-secondary bg-surface-container-lowest border border-outline-variant rounded hover:bg-surface-container transition-colors order-2 sm:order-1">
+            Back
+          </button>
+<button class="w-full sm:w-auto px-10 py-2.5 text-body-sm font-body-sm text-on-primary bg-primary rounded hover:opacity-90 transition-opacity flex items-center justify-center space-x-2 order-1 sm:order-2">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</footer>
+</div>
+<!-- Subtle Brand Footer -->
+<div class="mt-8 text-center">
+<p class="text-[11px] font-mono-label text-on-secondary-container tracking-wider uppercase opacity-40">Intelligence Engine v2.4.0 • Secure Transmission</p>
+</div>
+</div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+    function updatePrice(val) {
+      const display = document.getElementById('priceDisplay');
+      // Logic for a range simulation
+      const low = Math.floor(val * 0.1);
+      display.innerText = `$${low} — $${val}`;
+    }
+
+    // Add subtle focus effects on inputs
+    document.querySelectorAll('input, textarea, select').forEach(el => {
+      el.addEventListener('focus', () => {
+        el.parentElement.classList.add('opacity-100');
+      });
+    });
+  </script>
+</body></html>

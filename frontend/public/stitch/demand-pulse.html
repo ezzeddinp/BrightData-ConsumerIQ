@@ -1,0 +1,489 @@
+<!DOCTYPE html><html class="light" lang="en"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Demand Pulse | ConsumerIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary-fixed": "#d3e4fe",
+                        "secondary": "#505f76",
+                        "tertiary-container": "#191c1e",
+                        "primary": "#000000",
+                        "surface-tint": "#5e5e5e",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-primary-container": "#848484",
+                        "secondary-container": "#f4f4f5",
+                        "on-secondary-container": "#18181b",
+                        "outline": "#7e7576",
+                        "on-background": "#131b2e",
+                        "outline-variant": "#e4e4e7",
+                        "surface-variant": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-low": "#fafafa",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-secondary-container": "#54647a",
+                        "surface": "#ffffff",
+                        "tertiary": "#000000",
+                        "background": "#faf8ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-dim": "#d2d9f4",
+                        "on-surface": "#09090b",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#818486",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e0e3e5",
+                        "inverse-primary": "#c6c6c6",
+                        "on-surface-variant": "#71717a",
+                        "primary-container": "#1b1b1b",
+                        "surface-container-highest": "#dae2fd",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-xs": "4px",
+                        "stack-sm": "8px",
+                        "stack-xl": "48px",
+                        "container-max": "1280px",
+                        "margin-desktop": "32px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "stack-lg": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "code": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "code": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "title": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .chart-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
+        .grid-mesh { background-image: radial-gradient(#e2e8f0 1px, transparent 1px); background-size: 24px 24px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+<!-- Updated SideNavBar component matching SCREEN_20 -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-white border-r border-outline-variant z-50">
+<div class="flex flex-col h-full py-6 px-4">
+<div class="px-4 mb-8">
+<h1 class="text-lg font-bold tracking-tight text-primary">ConsumerIQ</h1>
+<p class="text-xs text-on-surface-variant">Market Intelligence</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary font-semibold bg-secondary-container rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+<span class="text-sm">Demand Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span class="text-sm font-medium">Persona Decode</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span>
+<span class="text-sm font-medium">Competitor Mirror</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span class="text-sm font-medium">Launch Compass</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-secondary-container hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 pt-4 border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-lg text-sm font-medium hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+                Founder Chat
+            </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-0 md:ml-64 flex flex-col min-h-screen relative">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full h-16 px-6 sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-surface-container-low border-none rounded-md py-1.5 pl-10 pr-4 text-sm font-body-md focus:ring-1 focus:ring-primary transition-all w-64" placeholder="Search signals..." type="text">
+</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-sm font-medium" href="#">Overview</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-sm" href="#">Network</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-sm font-medium" href="#">Status</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:text-primary transition-colors">chat_bubble</button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-md font-label-md text-sm font-medium transition-all active:opacity-70">
+                New Project
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjdiC_4u4Blwu3sd7nLUKTe1Z65Rr4fIDni5IhDWRA2DtxSQFXt5oNkPoFA0d9Z7gptXyozOU9huJBgjfUMqvvgrljdDEOKdY-RP7iaaqo7B1qqWKUBjGavj4yYX7lKJFC-hYb4mthpEsNyEMWF2udPH7VEDLBRc3VAzEE0VEPAaEJ5mwflrJdsebH1Ra72JiaKHyqy4bJfWv7GVCArEz1UJ0KPS_4UOF4v7Gqq_M357J1npDro6KQnSKHc0FlRPp4-9AfUBlvDW8">
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<div class="flex-1 p-6 lg:p-10 max-w-container-max mx-auto w-full grid-mesh">
+<!-- Page Title -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Demand Pulse</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Real-time velocity and search intent signals for Q4 Strategy.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-low border border-outline-variant rounded-lg p-1">
+<button class="px-3 py-1.5 rounded-md bg-white text-label-sm font-label-sm shadow-sm">Real-time</button>
+<button class="px-3 py-1.5 rounded-md text-on-surface-variant text-label-sm font-label-sm hover:text-primary transition-colors">Historical</button>
+</div>
+<button class="flex items-center gap-2 border border-outline-variant bg-white px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                    Last 24h
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Chart: Trend Velocity -->
+<div class="col-span-12 lg:col-span-8 bg-white border border-outline-variant rounded-xl p-6 flex flex-col min-h-[400px]">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-title text-title text-primary">Trend Velocity Index</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Global aggregate interest momentum</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-sm font-label-sm">Organic</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+<span class="text-label-sm font-label-sm">Projected</span>
+</div>
+</div>
+</div>
+<!-- SVG Chart Visualization -->
+<div class="flex-1 w-full relative group">
+<svg class="w-full h-full" viewBox="0 0 800 250">
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="200" y2="200"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="150" y2="150"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="100" y2="100"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="50" y2="50"></line>
+<path d="M0 200 L50 180 L100 190 L150 160 L200 170 L250 130 L300 140 L350 100 L400 110 L450 70 L500 80 L550 40 L600 60 L650 30 L700 50 L750 10 L800 15 L800 250 L0 250 Z" fill="url(#gradient-primary)" fill-opacity="0.05"></path>
+<polyline class="transition-all duration-700" fill="none" points="0,200 50,180 100,190 150,160 200,170 250,130 300,140 350,100 400,110 450,70 500,80 550,40 600,60 650,30 700,50 750,10 800,15" stroke="#000000" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<circle class="group-hover:scale-125 transition-transform cursor-pointer" cx="550" cy="40" fill="#000000" r="5"></circle>
+<defs>
+<linearGradient id="gradient-primary" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:black;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:white;stop-opacity:0"></stop>
+</linearGradient>
+</defs>
+</svg>
+<div class="absolute top-[30px] left-[555px] bg-primary text-on-primary px-3 py-1.5 rounded text-[11px] font-medium shadow-xl hidden group-hover:block transition-all">
+                        Peak Momentum: +182%
+                    </div>
+</div>
+<div class="mt-6 flex justify-between border-t border-outline-variant pt-6">
+<div class="flex gap-10">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter">Current Velocity</p>
+<p class="text-headline-sm font-headline-sm">42.8m/s</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter">Accelaration</p>
+<p class="text-headline-sm font-headline-sm text-error">+12.4%</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                        Export SVGs <span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+<!-- Top Rising Formats -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-white border border-outline-variant rounded-xl p-6 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-title text-title text-primary">Top Rising Formats</h3>
+<span class="material-symbols-outlined text-on-surface-variant">trending_up</span>
+</div>
+<div class="space-y-4 flex-1">
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-between group hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-black flex items-center justify-center text-white">
+<span class="material-symbols-outlined">video_library</span>
+</div>
+<div>
+<p class="font-title text-body-lg">Short-form Video</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">42% of total reach</p>
+</div>
+</div>
+<span class="text-headline-sm font-headline-sm tracking-tighter">+88%</span>
+</div>
+<div class="p-4 rounded-lg bg-white border border-outline-variant flex items-center justify-between group hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined">podcasts</span>
+</div>
+<div>
+<p class="font-title text-body-lg">Conversational AI</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">12% penetration</p>
+</div>
+</div>
+<span class="text-headline-sm font-headline-sm tracking-tighter">+54%</span>
+</div>
+<div class="p-4 rounded-lg bg-white border border-outline-variant flex items-center justify-between group hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined">newspaper</span>
+</div>
+<div>
+<p class="font-title text-body-lg">Curated Newsletters</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">High LTV segments</p>
+</div>
+</div>
+<span class="text-headline-sm font-headline-sm tracking-tighter">+31%</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-label-md font-label-md border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">View All Formats</button>
+</div>
+<!-- Marketplace Comparison -->
+<div class="col-span-12 md:col-span-6 bg-white border border-outline-variant rounded-xl overflow-hidden flex flex-col h-[400px]">
+<div class="p-6 border-b border-outline-variant bg-white">
+<h3 class="font-title text-title text-primary">Marketplace Share</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Dominance by platform segment</p>
+</div>
+<div class="flex-1 flex p-6 items-center gap-8">
+<div class="relative w-40 h-40">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="80" cy="80" fill="transparent" r="70" stroke="#f1f5f9" stroke-width="20"></circle>
+<circle class="transition-all duration-1000" cx="80" cy="80" fill="transparent" r="70" stroke="#000000" stroke-dasharray="280 440" stroke-width="20"></circle>
+<circle cx="80" cy="80" fill="transparent" r="70" stroke="#4c4546" stroke-dasharray="100 440" stroke-dashoffset="-280" stroke-width="20"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-headline-md font-headline-md">64%</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Leader</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary rounded-sm"></div>
+<span class="font-body-md text-body-md">SaaS / Cloud</span>
+</div>
+<span class="font-bold">64.2%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-on-surface-variant rounded-sm"></div>
+<span class="font-body-md text-body-md">Retail/Ecomm</span>
+</div>
+<span class="font-bold">22.8%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-outline-variant rounded-sm"></div>
+<span class="font-body-md text-body-md">Professional Services</span>
+</div>
+<span class="font-bold">13.0%</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low text-center">
+<p class="text-label-sm font-label-sm">Signal Confidence: <span class="font-bold">High (98%)</span></p>
+</div>
+</div>
+<!-- Search Intent (SERP API data) -->
+<div class="col-span-12 md:col-span-6 bg-primary text-on-primary rounded-xl p-6 flex flex-col h-[400px]">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="font-title text-title">Search Intent Analysis</h3>
+<p class="text-label-sm font-label-sm text-on-primary/60">Live SERP Clustering</p>
+</div>
+<div class="px-2 py-1 bg-white/10 rounded text-[10px] border border-white/20 uppercase tracking-widest">Live</div>
+</div>
+<div class="flex-1 space-y-3 overflow-y-auto no-scrollbar">
+<div class="bg-white/5 border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-white/90">"AI productivity tools enterprise"</span>
+<span class="material-symbols-outlined text-[16px] text-white/40 group-hover:text-white transition-colors">arrow_outward</span>
+</div>
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 text-[10px] font-bold uppercase">Commercial</span>
+<span class="px-2 py-0.5 rounded bg-white/10 text-white/60 text-[10px] font-bold uppercase">Volume: 14k</span>
+</div>
+<div class="h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-white w-3/4"></div>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-white/90">"Sustainable fashion manufacturing"</span>
+<span class="material-symbols-outlined text-[16px] text-white/40 group-hover:text-white transition-colors">arrow_outward</span>
+</div>
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400 text-[10px] font-bold uppercase">Informational</span>
+<span class="px-2 py-0.5 rounded bg-white/10 text-white/60 text-[10px] font-bold uppercase">Volume: 82k</span>
+</div>
+<div class="h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-white w-1/2"></div>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-white/90">"Low-code backend automation"</span>
+<span class="material-symbols-outlined text-[16px] text-white/40 group-hover:text-white transition-colors">arrow_outward</span>
+</div>
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 text-[10px] font-bold uppercase">Transactional</span>
+<span class="px-2 py-0.5 rounded bg-white/10 text-white/60 text-[10px] font-bold uppercase">Volume: 3k</span>
+</div>
+<div class="h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-white w-1/4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto border-t border-outline-variant bg-white p-6">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2024 ConsumerIQ Analytics. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" href="#">System Status</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Navigation Drawer (Side) - Founder AI -->
+<aside class="hidden xl:flex flex-col h-screen w-80 fixed right-0 top-0 bg-white border-l border-outline-variant z-30">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex items-center justify-between mb-1">
+<h2 class="font-title text-title text-primary">Founder AI</h2>
+<span class="material-symbols-outlined text-primary text-[18px]">auto_awesome</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Always active intelligence</p>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<div class="bg-secondary-container/30 rounded-xl p-4 border border-secondary-container">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container">psychology</span>
+<span class="text-label-sm font-bold uppercase tracking-tight text-on-secondary-container">Recent Analysis</span>
+</div>
+<p class="text-body-md font-body-md text-on-secondary-container/80 italic">"The velocity in short-form video suggests a shift toward micro-segmentation in early 2025. Recommend re-allocating Q4 ad spend by +15%."</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase text-on-surface-variant px-4 py-2">History</p>
+<a class="flex items-center gap-3 px-4 py-2 text-primary font-bold bg-secondary-container/50 rounded-md transition-all" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-body-md">Q4 Market Shift</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md">Gen Z Retention Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-md" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-body-md">Template: Ecomm Growth</span>
+</a>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-outline-variant">
+<div class="relative">
+<input class="w-full bg-white border border-outline-variant rounded-lg py-3 pl-4 pr-12 text-body-md focus:ring-1 focus:ring-primary" placeholder="Ask Founder AI..." type="text">
+<button class="absolute right-2 top-2 p-1.5 bg-primary text-white rounded-md">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</aside>
+<button class="fixed bottom-8 right-8 bg-primary text-on-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined">add</span>
+<span class="absolute right-16 bg-primary text-white px-3 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Track New Trend</span>
+</button>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const circles = document.querySelectorAll('circle');
+        circles.forEach(c => {
+            c.addEventListener('mouseover', () => {
+                if (c.getAttribute('stroke-width') === '20') {
+                    c.setAttribute('stroke-width', '25');
+                }
+            });
+            c.addEventListener('mouseout', () => {
+                if (c.getAttribute('stroke-width') === '25') {
+                    c.setAttribute('stroke-width', '20');
+                }
+            });
+        });
+    });
+</script>
+</body></html>

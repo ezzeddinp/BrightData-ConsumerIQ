@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Data Sources &amp; Infrastructure - ConsumerIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#f1f5f9",
+                        "on-background": "#020617",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#ffffff",
+                        "secondary-fixed": "#e2e8f0",
+                        "inverse-primary": "#cbd5e1",
+                        "on-error-container": "#991b1b",
+                        "error-container": "#fee2e2",
+                        "inverse-surface": "#0f172a",
+                        "secondary-fixed-dim": "#94a3b8",
+                        "primary-fixed-dim": "#94a3b8",
+                        "outline": "#e2e8f0",
+                        "tertiary": "#000000",
+                        "outline-variant": "#e2e8f0",
+                        "on-secondary-fixed": "#0f172a",
+                        "tertiary-container": "#f1f5f9",
+                        "primary-container": "#020617",
+                        "error": "#ef4444",
+                        "primary": "#020617",
+                        "on-surface-variant": "#64748b",
+                        "tertiary-fixed-dim": "#94a3b8",
+                        "surface-container": "#f8fafc",
+                        "on-tertiary-fixed": "#0f172a",
+                        "background": "#ffffff",
+                        "surface-tint": "#020617",
+                        "on-tertiary-fixed-variant": "#475569",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#f1f5f9",
+                        "on-secondary-container": "#475569",
+                        "on-primary-fixed": "#020617",
+                        "on-primary-container": "#94a3b8",
+                        "on-surface": "#0f172a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#ffffff",
+                        "on-primary-fixed-variant": "#475569",
+                        "surface-container-low": "#f8fafc",
+                        "secondary": "#64748b",
+                        "primary-fixed": "#f1f5f9",
+                        "surface-variant": "#f1f5f9",
+                        "surface-container-highest": "#f1f5f9",
+                        "on-tertiary-container": "#475569",
+                        "on-secondary-fixed-variant": "#1e293b",
+                        "surface-dim": "#f1f5f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-xl": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .card { background-color: theme('colors.surface'); border: 1px solid theme('colors.outline-variant'); border-radius: theme('borderRadius.lg'); overflow: hidden; }
+        .status-badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: theme('borderRadius.full'); font-size: 12px; font-weight: 500; border: 1px solid transparent; }
+        .status-operational { background-color: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+        .status-degraded { background-color: #fefce8; color: #854d0e; border-color: #fef08a; }
+        .status-down { background-color: #fef2f2; color: #991b1b; border-color: #fecaca; }
+        
+        .sidenav-link { display: flex; align-items: center; padding: 8px 12px; color: theme('colors.on-surface-variant'); transition: all 150ms ease; border-radius: theme('borderRadius.DEFAULT'); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .sidenav-link:hover { background-color: theme('colors.surface-container-high'); color: theme('colors.on-surface'); }
+        .sidenav-link.active { background-color: theme('colors.secondary-container'); color: theme('colors.primary'); font-weight: 600; }
+        
+        table thead th { border-bottom: 1px solid theme('colors.outline-variant'); }
+        table tbody tr:last-child { border-bottom: none; }
+    </style>
+</head>
+<body class="font-body-md antialiased text-on-surface">
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant z-50">
+<div class="flex flex-col h-full py-6 px-4">
+<div class="px-3 mb-8"><h1 class="text-lg font-bold tracking-tight text-primary">ConsumerIQ</h1><p class="text-xs text-on-surface-variant font-medium uppercase tracking-wider">Market Intelligence</p></div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-md transition-colors" href="#"><span class="material-symbols-outlined !text-[20px]">dashboard</span><span class="text-sm font-medium">Dashboard</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-md transition-colors" href="#"><span class="material-symbols-outlined !text-[20px]">analytics</span><span class="text-sm font-medium">Demand Pulse</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-md transition-colors" href="#"><span class="material-symbols-outlined !text-[20px]">face_6</span><span class="text-sm font-medium">Persona Decode</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-md transition-colors" href="#"><span class="material-symbols-outlined !text-[20px]">monitoring</span><span class="text-sm font-medium">Competitor Mirror</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-md transition-colors" href="#"><span class="material-symbols-outlined !text-[20px]">explore</span><span class="text-sm font-medium">Launch Compass</span></a><a class="flex items-center gap-3 px-3 py-2 text-primary font-semibold bg-secondary-container rounded-md transition-colors" href="#"><span class="material-symbols-outlined !text-[20px]">settings</span><span class="text-sm">Settings</span></a></nav>
+<div class="mt-auto pt-4">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2.5 rounded-lg text-sm font-medium hover:bg-opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+                Founder Chat
+            </button>
+</div>
+</div>
+</aside>
+<header class="flex justify-between items-center h-14 px-8 sticky top-0 bg-surface/80 backdrop-blur-md z-40 border-b border-outline-variant ml-0 md:ml-64">
+<div class="flex items-center w-1/3">
+<div class="relative w-full max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-sm placeholder:text-on-surface-variant/60" placeholder="Search resources..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:bg-surface-container-high p-2 rounded-md transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">notifications</span></button>
+<button class="hover:bg-surface-container-high p-2 rounded-md transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">help_outline</span></button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<button class="hover:bg-surface-container-high p-1.5 rounded-md transition-colors flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold">JD</div>
+</button>
+</div>
+</header>
+<main class="ml-0 md:ml-64 min-h-screen p-8 bg-surface-container-low/30">
+<div class="mb-8 flex justify-between items-end">
+<div>
+<h1 class="text-2xl font-semibold tracking-tight text-on-surface mb-1">Data Sources &amp; Infrastructure</h1>
+<p class="text-sm text-on-surface-variant">Manage connections, view API health, and monitor data ingestion pipelines.</p>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 hover:bg-opacity-90 transition-all border border-primary">
+<span class="material-symbols-outlined text-[18px]">sync</span> Force Sync All
+        </button>
+</div>
+<!-- Overview Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Status Summary -->
+<div class="card p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-sm font-semibold uppercase tracking-wider text-on-surface-variant">Network Health</h2>
+<span class="status-badge status-operational text-[11px]">Healthy</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-1">
+<span class="text-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">vpn_lock</span> Bright Data</span>
+<span class="text-sm font-medium text-on-surface">99.9% Uptime</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="text-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">database</span> Shopee Connect</span>
+<span class="text-sm font-medium text-on-surface">12ms</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="text-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">database</span> Tokopedia Stream</span>
+<span class="text-sm font-medium text-on-surface">18ms</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant">
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+                    View incident history <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Architecture Diagram -->
+<div class="card col-span-1 md:col-span-2 p-6 relative bg-white">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-sm font-semibold uppercase tracking-wider text-on-surface-variant">Pipeline Architecture</h2>
+<span class="text-xs text-on-surface-variant/60 font-mono">v4.2.0-stable</span>
+</div>
+<div class="flex items-center justify-between gap-2 py-4 relative">
+<!-- Connectors between nodes -->
+<div class="absolute top-1/2 left-0 w-full h-px bg-outline-variant -translate-y-1/2 z-0"></div>
+<!-- Node 1 -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface border border-outline-variant flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-primary text-[20px]">public</span></div>
+<div class="text-center">
+<div class="text-[11px] font-semibold text-on-surface">Marketplaces</div>
+<div class="text-[10px] text-on-surface-variant">External Source</div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-primary text-on-primary flex items-center justify-center shadow-md"><span class="material-symbols-outlined text-[20px]">security</span></div>
+<div class="text-center">
+<div class="text-[11px] font-semibold text-on-surface">Web Unlocker</div>
+<div class="text-[10px] text-on-surface-variant">Anti-Bot Bypass</div>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface border border-outline-variant flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-primary text-[20px]">terminal</span></div>
+<div class="text-center">
+<div class="text-[11px] font-semibold text-on-surface">Parsers</div>
+<div class="text-[10px] text-on-surface-variant">Schema Mapping</div>
+</div>
+</div>
+<!-- Node 4 -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface border border-outline-variant flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-primary text-[20px]">layers</span></div>
+<div class="text-center">
+<div class="text-[11px] font-semibold text-on-surface">Data Lake</div>
+<div class="text-[10px] text-on-surface-variant">Caches &amp; Diffs</div>
+</div>
+</div>
+<!-- Node 5 -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface border border-outline-variant flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-primary text-[20px]">monitoring</span></div>
+<div class="text-center">
+<div class="text-[11px] font-semibold text-on-surface">Frontend</div>
+<div class="text-[10px] text-on-surface-variant">Presentation</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Integrations Table -->
+<div class="card">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="text-sm font-semibold uppercase tracking-wider text-on-surface-variant">Bright Data Integrations</h3>
+<button class="text-xs font-semibold text-on-surface hover:text-primary transition-colors flex items-center gap-1">
+                Manage API Keys <span class="material-symbols-outlined text-[14px]">settings</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[12px] text-on-surface-variant bg-surface-container-low/50">
+<th class="py-3 px-6 font-semibold uppercase tracking-tight">Service</th>
+<th class="py-3 px-6 font-semibold uppercase tracking-tight">Status</th>
+<th class="py-3 px-6 font-semibold uppercase tracking-tight">Last Sync</th>
+<th class="py-3 px-6 font-semibold uppercase tracking-tight">Volume (24h)</th>
+<th class="py-3 px-6 font-semibold uppercase tracking-tight">Latency</th>
+<th class="py-3 px-6"></th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center bg-white">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">search</span>
+</div>
+<div>
+<div class="font-medium text-on-surface">SERP API</div>
+<div class="text-[12px] text-on-surface-variant">Google/Bing organic ranks</div>
+</div>
+</div>
+</td>
+<td class="py-5 px-6"><span class="status-badge status-operational">Active</span></td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">2 mins ago</td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">42.5k req</td>
+<td class="py-5 px-6 font-medium text-on-surface">120ms</td>
+<td class="py-5 px-6 text-right"><button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">more_horiz</span></button></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center bg-white">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">code</span>
+</div>
+<div>
+<div class="font-medium text-on-surface">Web Scraper API</div>
+<div class="text-[12px] text-on-surface-variant">Shopee Storefronts</div>
+</div>
+</div>
+</td>
+<td class="py-5 px-6"><span class="status-badge status-operational">Active</span></td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">15 mins ago</td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">1.2M req</td>
+<td class="py-5 px-6 font-medium text-on-surface">850ms</td>
+<td class="py-5 px-6 text-right"><button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">more_horiz</span></button></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center bg-white">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">precision_manufacturing</span>
+</div>
+<div>
+<div class="font-medium text-on-surface">Scraper Studio</div>
+<div class="text-[12px] text-on-surface-variant">Custom Tokopedia Parser</div>
+</div>
+</div>
+</td>
+<td class="py-5 px-6"><span class="status-badge status-degraded">Throttled</span></td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">1 hr ago</td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">850k req</td>
+<td class="py-5 px-6 font-medium text-error">2.4s</td>
+<td class="py-5 px-6 text-right"><button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">more_horiz</span></button></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center bg-white">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">vpn_key</span>
+</div>
+<div>
+<div class="font-medium text-on-surface">Web Unlocker</div>
+<div class="text-[12px] text-on-surface-variant">Bypass Anti-Bot Systems</div>
+</div>
+</div>
+</td>
+<td class="py-5 px-6"><span class="status-badge status-operational">Active</span></td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">Real-time</td>
+<td class="py-5 px-6 text-on-surface-variant font-mono text-[13px]">500k req</td>
+<td class="py-5 px-6 font-medium text-on-surface">45ms</td>
+<td class="py-5 px-6 text-right"><button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">more_horiz</span></button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-3 border-t border-outline-variant bg-surface-container-low/30 text-right">
+<button class="text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors">Export Usage Report (CSV)</button>
+</div>
+</div>
+</main>
+
+
+</body></html>
